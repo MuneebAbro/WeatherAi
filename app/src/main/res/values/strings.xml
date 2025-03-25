@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WeatherAi</string>
+    <string name="title_activity_city_search">CitySearchActivity</string>
 </resources>

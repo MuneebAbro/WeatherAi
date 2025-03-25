@@ -17,7 +17,7 @@ fun MainScreen() {
             .fillMaxSize()
     ) {
         // Background Gradient
-        GradientBackground()
+        GradientBackground{
 
         Column(
             modifier = Modifier
@@ -34,5 +34,6 @@ fun MainScreen() {
             Spacer(modifier = Modifier.height(16.dp))
             WeeklyForecast()
         }
+    }
     }
 }

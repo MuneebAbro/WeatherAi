@@ -14,22 +14,16 @@ import com.muneeb.weatherai.R
 
 
 @Composable
-fun GradientBackground() {
+fun GradientBackground(content: @Composable () -> Unit) {
     val context = LocalContext.current
     val grad1 = ContextCompat.getColor(context, R.color.grad1)
     val grad2 = ContextCompat.getColor(context, R.color.grad2)
     val grad3 = ContextCompat.getColor(context, R.color.grad3)
 
-    val gradientColors = listOf(
-        Color(grad1),
-        Color(grad2),
-        Color(grad3)
-    )
-
     val colorStops = listOf(
-        0.0f to Color(grad1),   // 0% position
+        0.0f to Color(grad1),
         0.8f to Color(grad2),
-        1.0f to Color(grad3)    // 100% position
+        1.0f to Color(grad3)
     )
 
     Box(
@@ -38,9 +32,11 @@ fun GradientBackground() {
             .background(
                 Brush.linearGradient(
                     colorStops = colorStops.toTypedArray(),
-                    start = Offset(0f, 0f),  // Top-left
-                    end = Offset(1500f, 1500f) // Bottom-right (45-degree effect)
+                    start = Offset(0f, 0f),
+                    end = Offset(1500f, 1500f)
                 )
             )
-    )
+    ) {
+        content() // Now it wraps the child composables
+    }
 }
