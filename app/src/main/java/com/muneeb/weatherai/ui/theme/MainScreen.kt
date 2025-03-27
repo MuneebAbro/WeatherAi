@@ -9,31 +9,33 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.muneeb.weatherai.viewmodel.CityViewModel
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    cityViewModel: CityViewModel, // Accept ViewModel
+    onCityClick: () -> Unit // Function to open CitySearchActivity
+) {
     Box(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
         // Background Gradient
-        GradientBackground{
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-        ) {
-            TopBar()
-            Spacer(modifier = Modifier.height(16.dp))
-            WeatherInfo()
-            Spacer(modifier = Modifier.height(16.dp))
-            WeatherDetails()
-            Spacer(modifier = Modifier.height(16.dp))
-            HourlyForecast()
-            Spacer(modifier = Modifier.height(16.dp))
-            WeeklyForecast()
+        GradientBackground {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+            ) {
+                TopBar(cityViewModel, onCityClick) // Pass ViewModel and function
+                Spacer(modifier = Modifier.height(16.dp))
+                WeatherInfo()
+                Spacer(modifier = Modifier.height(16.dp))
+                WeatherDetails()
+                Spacer(modifier = Modifier.height(16.dp))
+                HourlyForecast()
+                Spacer(modifier = Modifier.height(16.dp))
+                WeeklyForecast()
+            }
         }
-    }
     }
 }
